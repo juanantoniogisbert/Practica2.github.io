@@ -5,11 +5,13 @@ Orginalmente cuando creamos un repositorio en GitHub se crea automaticamente la 
 ```markdown
 $ git branch develop
 ```
+
 Para mostras las ramas hacemos el siguiente comando:
 
 ```markdown
 $ git branch -a
 ```
+
 Una vez tengamos la ramas creadas las vamos a subir en remoto a nuestro repositorio.
 
 ```markdown
@@ -18,7 +20,7 @@ $ git push origin develop
 
 ### Paso 2
 
-En este paso vamos a crear las ramas `feature1, feature2` con los siguientes comandos
+En este paso vamos a crear las ramas `feature1, feature2` desde la rama `develop` con los siguientes comandos
 
 ```markdown
 $ git branch feature1
@@ -36,49 +38,66 @@ $ git push origin feature1
 $ git push origin feature2
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Ahora accederos a `feature1` y crearemos un fichero y lo modicaremos.
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+$ git checkout feature1
+$ touch fichero.txt
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Una vez modificado este fichero lo subimos al repositorio remoto:
 
-### Jekyll Themes
+```markdown
+$ git commit -m "modificacion en feature1"
+$ git push -u origin feature1
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/juanantoniogisbert/Practica2.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Ahora realizaremos lo mismo pero en la `feature2`. Una vez realizo los comandos experimentaremos con un error entre features.
 
-### Support or Contact
+### Paso 3
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+En este paso lo que vamos a hacer es solucionar el conficto, utilizamos los siguientes comandos:
+
+```markdown
+$ git checkout develop
+$ git merge feature1
+$ git merge feature2
+```
+
+Una vez solucionado el conficto pasamos al siguiente paso.
+
+### Paso 4
+
+Vamos a subir los cambios con una etiqueta anotada:
+
+```markdown
+$ git add fichero.txt
+$ git commit -m "Conflictos solucionados"
+$ git push origin develop
+$ git tag -a TagAnotada -m "Modificacion de las features"
+$ git push origin develop --tags
+```
+
+Ahora vamos a pasarlo todo la rama master y subirlo a nuestro repositorio remoto
+
+```markdown
+$ git checkout master
+$ git merge develop
+$ git push origin master
+```
+Nos encotraremos con un error en la rama master para ello utilizaremos un hotfix para solucionarlo.
+
+```markdown
+$ git checkout -b hotfix1
+$ git commit -m "Error en rama master"
+```
+Para tener nuestra aplicacion actualizada hacemos los siguientes comandos:
+
+```markdown
+$ git checkout develop
+$ git merge hotfix1 
+$ git push origin develop
+$ git checkout master
+$ git merge hotfix1
+$ git push origin master
+```

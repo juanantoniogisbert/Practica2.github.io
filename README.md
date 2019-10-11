@@ -1,12 +1,59 @@
-## Welcome to GitHub Pages
+### Paso 1
 
-You can use the [editor on GitHub](https://github.com/juanantoniogisbert/Practica2.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Orginalmente cuando creamos un repositorio en GitHub se crea automaticamente la rama master, ahora vamos a crear la rama `develop`.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+```markdown
+$ git branch develop
+```
+Para mostras las ramas hacemos el siguiente comando:
 
-### Markdown
+```markdown
+$ git branch -a
+```
+Una vez tengamos la ramas creadas las vamos a subir en remoto a nuestro repositorio.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+```markdown
+$ git push origin develop
+```
+
+### Paso 2
+
+En este paso vamos a crear las ramas `feature1, feature2` con los siguientes comandos
+
+```markdown
+$ git branch feature1
+$ git branch feature2
+```
+Para mostras la ramas hacemos el siguiente comando:
+
+```markdown
+$ git branch -a
+```
+Una vez tengamos la ramas creadas las vamos a subir en remoto a nuestro repositorio.
+
+```markdown
+$ git push origin feature1
+$ git push origin feature2
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```markdown
 Syntax highlighted code block
